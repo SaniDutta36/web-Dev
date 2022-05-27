@@ -1,22 +1,139 @@
 <!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en">
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Home-page</title>
+  <title>Csv file Viewer</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script type="text/javascript">
+    function processData(csv, cellNo) {
+
+      let data = csv.split(/\r\n|\n/).map(v => v.split(','));
+
+      let headers = data.shift();
+
+      let table = document.createElement('table');
+      table.setAttribute('border', '1');
+
+      let thead = document.createElement('thead');
+      table.appendChild(thead);
+
+      thead.innerHTML = '<tr><th>' + headers.join('</th><th>') + '</th></tr>';
+
+      let tbody = document.createElement('tbody');
+      table.appendChild(tbody);
+
+      for (let row of data) {
+        tbody.innerHTML += '<tr><td>' + row.join('</td><td>') + '</td></tr>';
+      }
+
+      document.getElementById("dataCell"+cellNo).appendChild(table);
+
+    }
+  </script>
+
 </head>
+
 <body>
-	<div class="container">
-		<div class="leftSide-basicDetails">
-			<img src="me.jpg" alt="My Picture">
-			<h2>Suny Dutta</h2>
-			<p>About Me</p>
-			<p>Education</p>
-			<p>Contact Me</p>
-		</div>
-		<div class="rightSide-aboutMe">
-			<p>Hello, My Name is Suny Dutta. I'm a Python programmer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		</div>
-	</div>
+  <div class="container">
+  <div class="header">
+    <h1>Sentiment Analysis from Bengali Text</h1>
+  </div>
+  <hr>
+  <div class="datasets">
+  <table border="1px">
+    <tbody>
+      <tr>
+        <td>
+          <p>Dataset-1:</p>
+          <script type="text/javascript">
+          // I uploaded the CSV to a personal repo for this example,
+          // but you CAN use a local file as long as you *serve* it
+          fetch("https://github.com/SaniDutta36/web-Dev/blob/main/data/Sentiment_dataset1_benchmark_corpus.csv?raw=true")
+            .then(res => res.text())
+            .then(text => processData(text, "1"));
+          </script>
+          <div id="dataCell1"></div>
+        </td>
+        <td>
+          <p>Dataset-2:</p>
+          <script type="text/javascript">
+          // I uploaded the CSV to a personal repo for this example,
+          // but you CAN use a local file as long as you *serve* it
+          fetch("https://raw.githubusercontent.com/SaniDutta36/web-Dev/main/data/Sentiment_dataset2_test.csv")
+            .then(res => res.text())
+            .then(text => processData(text, 3));
+          </script>
+          <div id="dataCell3"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Dataset-3:</p>
+          <script type="text/javascript">
+          // I uploaded the CSV to a personal repo for this example,
+          // but you CAN use a local file as long as you *serve* it
+          fetch("https://github.com/SaniDutta36/web-Dev/raw/main/data/Sentiment_dataset3_Restaurant.csv")
+            .then(res => res.text())
+            .then(text => processData(text, 3));
+          </script>
+          <div id="dataCell3"></div>
+        </td>
+        <td>
+          <p>Dataset-4:</p>
+          <script type="text/javascript">
+          // I uploaded the CSV to a personal repo for this example,
+          // but you CAN use a local file as long as you *serve* it
+          fetch("https://github.com/SaniDutta36/web-Dev/raw/main/data/Sentiment_dataset4_Book.csv")
+            .then(res => res.text())
+            .then(text => processData(text, 4));
+          </script>
+          <div id="dataCell4"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Dataset-5:</p>
+          <script type="text/javascript">
+          // I uploaded the CSV to a personal repo for this example,
+          // but you CAN use a local file as long as you *serve* it
+          fetch("https://github.com/SaniDutta36/web-Dev/raw/main/data/Sentiment_dataset5_Cricket.csv")
+            .then(res => res.text())
+            .then(text => processData(text, 5));
+          </script>
+          <div id="dataCell5"></div>
+        </td>
+        <td>
+          <p>Dataset-6:</p>
+          <script type="text/javascript">
+          // I uploaded the CSV to a personal repo for this example,
+          // but you CAN use a local file as long as you *serve* it
+          fetch("https://github.com/SaniDutta36/web-Dev/raw/main/data/Sentiment_dataset5_Restaurent.csv")
+            .then(res => res.text())
+            .then(text => processData(text, 6));
+          </script>
+          <div id="dataCell6"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Dataset-7:</p>
+          <script type="text/javascript">
+          // I uploaded the CSV to a personal repo for this example,
+          // but you CAN use a local file as long as you *serve* it
+          fetch("https://github.com/SaniDutta36/web-Dev/blob/main/data/Sentiment_dataset6_NewsComments.csv?raw=true")
+            .then(res => res.text())
+            .then(text => processData(text, 7));
+          </script>
+          <div id="dataCell7"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+  <hr>
+  <h1>Merge Datasets</h1>
 </body>
 </html>
