@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+table {
+	border-collapse:collapse;
+	table-layout: fixed;
+	width: 100%;
+}
+.datasets {
+	width: 100%;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+}
+.sidebar-item {
+    display: block;
+    height: 100px;
+    margin: 5px;
+}
+.header {
+    display: block;
+    height: 100px;
+    flex:none;
+}
+.content {
+    flex:1;
+    display: flex;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+[id^=dataCell] {
+	border: 1px solid black;
+    display: flex;
+	overflow: scroll;
+	height: 60vh;
+	margin: 0.6rem 0.6rem 0.6rem 0.6rem;
+}
