@@ -1,139 +1,179 @@
 <!DOCTYPE html>
-<!-- saved from url=(0014)about:internet -->
-<html lang="en">
 <html>
-
 <head>
-  <title>Csv file Viewer</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sentiment Analysis</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script type="text/javascript">
-    function processData(csv, cellNo) {
-
-      let data = csv.split(/\r\n|\n/).map(v => v.split(','));
-
-      let headers = data.shift();
-
-      let table = document.createElement('table');
-      table.setAttribute('border', '1');
-
-      let thead = document.createElement('thead');
-      table.appendChild(thead);
-
-      thead.innerHTML = '<tr><th>' + headers.join('</th><th>') + '</th></tr>';
-
-      let tbody = document.createElement('tbody');
-      table.appendChild(tbody);
-
-      for (let row of data) {
-        tbody.innerHTML += '<tr><td>' + row.join('</td><td>') + '</td></tr>';
-      }
-
-      document.getElementById("dataCell"+cellNo).appendChild(table);
-
-    }
-  </script>
-
 </head>
-
 <body>
   <div class="container">
-  <div class="header">
-    <h1>Sentiment Analysis from Bengali Text</h1>
+    <div class="header">
+      <h1>Sentiment Analysis from Bengali Text</h1>
+    </div>
+    <div class="dataset" style="background-color: #ECB365;">
+      <br/>
+      <h2>1. Bengali Datasets</h2>
+      <table class="blueTable">
+        <thead>
+          <tr>
+          <th>No.</th>
+          <th>Name</th>
+          <th>Columns</th>
+          <th>Sentiment<br>Labels</th>
+          <th>Download</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Bangla ( Bengali ) sentiment
+              <br> analysis classification
+              <br> benchmark dataset corpus
+            </td>
+            <td>Text, Tag</td>
+            <td>positive, negative</td>
+            <td><div class="button button-1">
+              <a href="https://github.com/SaniDutta36/web-Dev/raw/main/data/Sentiment_dataset1_benchmark_corpus.csv">
+              Dataset-1</a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>KhondokerIslam / 
+              <br>Bengali_Sentiment Dataset
+            </td>
+            <td>Data, Sentiment</td>
+            <td>0, 1, 2</td>
+            <td><div class="button button-1">Dataset-2</div></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>eftekhar-hossain /
+              <br>Bengali-Restaurant-Reviews
+            </td>
+            <td>Reviews, Sentiment</td>
+            <td>positive, negative</td>
+            <td><div class="button button-1">Dataset-3</div></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>eftekhar-hossain /
+              <br>Bengali-Book-Reviews
+            </td>
+            <td>Reviews, Sentiment</td>
+            <td>0, 1</td>
+            <td><div class="button button-1">Dataset-4</div></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>AtikRahman /
+              <br>Bangla_ABSA_Datasets/Cricket
+            </td>
+            <td>Source, Date, Text, Category, Polarity</td>
+            <td>positive, negative, neutral</td>
+            <td><div class="button button-1">Dataset-5</div></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>AtikRahman /
+              <br>Bangla_ABSA_Datasets/Restaurent
+            </td>
+            <td>SL, Text, Category, Polarity</td>
+            <td>negative, positive, neutral, conflict</td>
+            <td><div class="button button-1">Dataset-6</div></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Data Set For Sentiment Analysis
+              <br>On Bengali News Comments
+            </td>
+            <td>data, title_x, title_y, title, value, Tag</td>
+            <td>কিছুটা নেতিবাচক, নিশ্চিত নেতিবাচক,<br> নিরপেক্ষ, কিছুটা ইতিবাচক, নিশ্চিত ইতিবাচক</td>
+            <td><div class="button button-1">
+                <a href="https://github.com/SaniDutta36/web-Dev/raw/main/data/Sentiment_dataset6_NewsComments.csv">
+                Dataset-7
+                </a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <br/> <br/>
+    </div>
+    <hr/><hr/>
+    <div class="merge-dataset" style="background-color: #ECB365;">
+      <br>
+      <h2>2. Merging Above mentioned Datasets</h2>
+      <table class="unstyledTable">
+      <tbody>
+       <tr>
+          <td colspan="2"><img src="merged_dataset1.jpg" alt="Merging Procedure for merged Dataset-2"></td>
+       </tr>
+       <tr>
+          <td colspan="2"><img src="merged_dataset2.jpg" alt="Merging Procedure for merged Dataset-2"></td>
+       </tr>
+       <tr>
+          <td colspan="2"><img src="merged_dataset3.jpg" alt="Merging Procedure for merged Dataset-3"></td>
+       </tr>
+       <tr>
+          <td><img src="merged_dataset4.jpg" alt="Merging Procedure for merged Dataset-4"></td>
+          <td><img src="merged_dataset5.jpg" alt="Merging Procedure for merged Dataset-5"></td>
+       </tr>
+        </tbody>
+    </table>
+    <br/><br/>
+    </div>
+    <hr/><hr/>
+    <div class="result" style="background-color: #ECB365;">
+      <br>
+      <h2>3. Results after Fintuning BERT with the Datasets</h2>
+      <table class="blueTable">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Dataset Name</th>
+            <th>Accuracy</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Merged Dataset-1</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Merged Dataset-2</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Merged Dataset-3</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Merged Dataset-4</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Merged Dataset-5</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <br/> <br/>
+    </div>
+    <hr/> <hr/>
   </div>
-  <hr>
-  <div class="datasets">
-  <table border="1px">
-    <tbody>
-      <tr>
-        <td>
-          <p>Dataset-1:</p>
-          <script type="text/javascript">
-          // I uploaded the CSV to a personal repo for this example,
-          // but you CAN use a local file as long as you *serve* it
-          fetch("https://github.com/SaniDutta36/web-Dev/blob/main/data/Sentiment_dataset1_benchmark_corpus.csv?raw=true")
-            .then(res => res.text())
-            .then(text => processData(text, "1"));
-          </script>
-          <div id="dataCell1"></div>
-        </td>
-        <td>
-          <p>Dataset-2:</p>
-          <script type="text/javascript">
-          // I uploaded the CSV to a personal repo for this example,
-          // but you CAN use a local file as long as you *serve* it
-          fetch("https://raw.githubusercontent.com/SaniDutta36/web-Dev/main/data/Sentiment_dataset2_test.csv")
-            .then(res => res.text())
-            .then(text => processData(text, 3));
-          </script>
-          <div id="dataCell3"></div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <p>Dataset-3:</p>
-          <script type="text/javascript">
-          // I uploaded the CSV to a personal repo for this example,
-          // but you CAN use a local file as long as you *serve* it
-          fetch("https://github.com/SaniDutta36/web-Dev/raw/main/data/Sentiment_dataset3_Restaurant.csv")
-            .then(res => res.text())
-            .then(text => processData(text, 3));
-          </script>
-          <div id="dataCell3"></div>
-        </td>
-        <td>
-          <p>Dataset-4:</p>
-          <script type="text/javascript">
-          // I uploaded the CSV to a personal repo for this example,
-          // but you CAN use a local file as long as you *serve* it
-          fetch("https://github.com/SaniDutta36/web-Dev/raw/main/data/Sentiment_dataset4_Book.csv")
-            .then(res => res.text())
-            .then(text => processData(text, 4));
-          </script>
-          <div id="dataCell4"></div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <p>Dataset-5:</p>
-          <script type="text/javascript">
-          // I uploaded the CSV to a personal repo for this example,
-          // but you CAN use a local file as long as you *serve* it
-          fetch("https://github.com/SaniDutta36/web-Dev/raw/main/data/Sentiment_dataset5_Cricket.csv")
-            .then(res => res.text())
-            .then(text => processData(text, 5));
-          </script>
-          <div id="dataCell5"></div>
-        </td>
-        <td>
-          <p>Dataset-6:</p>
-          <script type="text/javascript">
-          // I uploaded the CSV to a personal repo for this example,
-          // but you CAN use a local file as long as you *serve* it
-          fetch("https://github.com/SaniDutta36/web-Dev/raw/main/data/Sentiment_dataset5_Restaurent.csv")
-            .then(res => res.text())
-            .then(text => processData(text, 6));
-          </script>
-          <div id="dataCell6"></div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <p>Dataset-7:</p>
-          <script type="text/javascript">
-          // I uploaded the CSV to a personal repo for this example,
-          // but you CAN use a local file as long as you *serve* it
-          fetch("https://github.com/SaniDutta36/web-Dev/blob/main/data/Sentiment_dataset6_NewsComments.csv?raw=true")
-            .then(res => res.text())
-            .then(text => processData(text, 7));
-          </script>
-          <div id="dataCell7"></div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-  </div>
-  <hr>
-  <h1>Merge Datasets</h1>
 </body>
 </html>
